@@ -11,6 +11,8 @@ import java.util.Date;
 @Data
 public class User {
 
+  public static final String ANONYMOUS_USER_NAME = "anonymous";
+
   @Id
   private long userId;
 

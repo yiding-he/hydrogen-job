@@ -15,7 +15,7 @@
         <pattern>${log.pattern}</pattern>
       </encoder>
     </appender>
-    <root level="INFO">
+    <root level="DEBUG">
       <appender-ref ref="CONSOLE"/>
     </root>
     <logger name="com" level="INFO"/>

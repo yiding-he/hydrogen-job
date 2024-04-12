@@ -10,8 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class AdminController {
 
   @RequestMapping({"/index", "/"})
-  public String index() {
-    return "redirect:/admin/login";
+  public ModelAndView index() {
+    return new ModelAndView("/admin/index");
   }
 
   @GetMapping("/login")

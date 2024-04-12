@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- http://logback.qos.ch/manual/index.html -->
+<!-- This configuration is for containers -->
+<configuration scan="true" scanPeriod="30 seconds">
+
+  <!-- Predefined log file name and log directory -->
+  <property name="log.root" value="/var/log"/>
+  <property name="log.file" value="server"/>
+  <property name="log.pattern" value="%d{HH:mm:ss}[%t][%-5level] %logger{30}:%line - %msg%n"/>
+
+  <!-- For local development environment and unit tests -->
+  <springProfile name="default | dev | unit">
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+      <encoder>
+        <pattern>${log.pattern}</pattern>
+      </encoder>
+    </appender>
+    <root level="INFO">
+      <appender-ref ref="CONSOLE"/>
+    </root>
+    <logger name="com" level="INFO"/>
+  </springProfile>
+
+  <!-- For integration testing environment -->
+  <springProfile name="test">
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <file>${log.root}/${log.file}.log</file>
+      <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <fileNamePattern>${log.root}/${log.file}.%d{yyyy-MM-dd}.log</fileNamePattern>
+      </rollingPolicy>
+      <encoder>
+        <pattern>${log.pattern}</pattern>
+      </encoder>
+    </appender>
+    <root level="INFO">
+      <appender-ref ref="FILE"/>
+    </root>
+    <logger name="com" level="INFO"/>
+  </springProfile>
+
+  <!-- For production environment -->
+  <springProfile name="prod">
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <file>${log.root}/${log.file}.log</file>
+      <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <fileNamePattern>${log.root}/${log.file}.%d{yyyy-MM-dd}.log</fileNamePattern>
+      </rollingPolicy>
+      <encoder>
+        <pattern>${log.pattern}</pattern>
+      </encoder>
+    </appender>
+    <root level="INFO">
+      <appender-ref ref="FILE"/>
+    </root>
+    <logger name="com" level="INFO"/>
+  </springProfile>
+
+</configuration>

@@ -65,7 +65,7 @@ $(function() {
 			},
 			dataType : "json",
 			success : function(data){
-				if (data.code == 200) {
+				if (data.code == 0) {
 					layer.open({
 						title: I18n.system_tips,
                         btn: [ I18n.system_ok ],

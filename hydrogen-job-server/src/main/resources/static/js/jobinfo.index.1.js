@@ -245,7 +245,7 @@ $(function() {
 				},
 				dataType : "json",
 				success : function(data){
-					if (data.code == 200) {
+					if (data.code == 0) {
                         layer.msg( typeName + I18n.system_success );
                         if (needFresh) {
                             //window.location.reload();
@@ -280,7 +280,7 @@ $(function() {
             },
             dataType : "json",
             success : function(data){
-                if (data.code == 200) {
+                if (data.code == 0) {
                     $('#jobTriggerModal').modal('hide');
 
                     layer.msg( I18n.jobinfo_opt_run + I18n.system_success );
@@ -312,7 +312,7 @@ $(function() {
             success : function(data){
 
                 var html = '<div>';
-                if (data.code == 200 && data.content.registryList) {
+                if (data.code == 0 && data.content.registryList) {
                     for (var index in data.content.registryList) {
                         html += (parseInt(index)+1) + '. <span class="badge bg-green" >' + data.content.registryList[index] + '</span><br>';
                     }
@@ -345,7 +345,7 @@ $(function() {
             dataType : "json",
             success : function(data){
 
-            	if (data.code != 200) {
+            	if (data.code != 0) {
                     layer.open({
                         title: I18n.jobinfo_opt_next_time ,
                         btn: [ I18n.system_ok ],
@@ -353,7 +353,7 @@ $(function() {
                     });
 				} else {
                     var html = '<center>';
-                    if (data.code == 200 && data.content) {
+                    if (data.code == 0 && data.content) {
                         for (var index in data.content) {
                             html += '<span>' + data.content[index] + '</span><br>';
                         }
@@ -457,7 +457,7 @@ $(function() {
 			$("#addModal .form input[name='scheduleConf']").val( scheduleConf );
 
         	$.post(base_url + "/jobinfo/add",  $("#addModal .form").serialize(), function(data, status) {
-    			if (data.code == "200") {
+    			if (data.code == 0) {
 					$('#addModal').modal('hide');
 					layer.open({
 						title: I18n.system_tips ,
@@ -641,7 +641,7 @@ $(function() {
 
 			// post
     		$.post(base_url + "/jobinfo/update", $("#updateModal .form").serialize(), function(data, status) {
-    			if (data.code == "200") {
+    			if (data.code == 0) {
 					$('#updateModal').modal('hide');
 					layer.open({
 						title: I18n.system_tips ,

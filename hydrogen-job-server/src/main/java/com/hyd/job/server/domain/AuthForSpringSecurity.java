@@ -1,17 +1,16 @@
 package com.hyd.job.server.domain;
 
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
+import org.springframework.lang.NonNull;
 import org.springframework.security.core.GrantedAuthority;
 
-@RequiredArgsConstructor
-public class AuthForSpringSecurity implements GrantedAuthority {
-
-  private final AuthorityType type;
-
-  private final String name;
+public record AuthForSpringSecurity(
+  @NonNull @Getter AuthorityType type,
+  @NonNull @Getter String name
+) implements GrantedAuthority {
 
   @Override
   public String getAuthority() {
-    return "";
+    return type.name() + ":" + name;
   }
 }

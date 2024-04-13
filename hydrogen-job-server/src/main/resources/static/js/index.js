@@ -49,14 +49,14 @@ $(function () {
     function freshChartDate(startDate, endDate) {
         $.ajax({
             type : 'POST',
-            url : base_url + '/chartInfo',
+            url : base_url + '/admin/chartInfo',
             data : {
                 'startDate':startDate.format('YYYY-MM-DD HH:mm:ss'),
                 'endDate':endDate.format('YYYY-MM-DD HH:mm:ss')
             },
             dataType : "json",
             success : function(data){
-                if (data.code == 200) {
+                if (data.code == 0) {
                     lineChartInit(data)
                     pieChartInit(data);
                 } else {

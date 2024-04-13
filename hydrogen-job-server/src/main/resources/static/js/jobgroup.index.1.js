@@ -157,7 +157,7 @@ $(function() {
 				data : {"id":id},
 				dataType : "json",
 				success : function(data){
-					if (data.code == 200) {
+					if (data.code == 0) {
 						layer.open({
 							title: I18n.system_tips ,
 							btn: [ I18n.system_ok ],
@@ -229,7 +229,7 @@ $(function() {
 		},
 		submitHandler : function(form) {
 			$.post(base_url + "/jobgroup/save",  $("#addModal .form").serialize(), function(data, status) {
-				if (data.code == "200") {
+				if (data.code == 0) {
 					$('#addModal').modal('hide');
 					layer.open({
 						title: I18n.system_tips ,
@@ -326,7 +326,7 @@ $(function() {
 		},
 		submitHandler : function(form) {
 			$.post(base_url + "/jobgroup/update",  $("#updateModal .form").serialize(), function(data, status) {
-				if (data.code == "200") {
+				if (data.code == 0) {
 					$('#updateModal').modal('hide');
 
 					layer.open({

@@ -1,7 +1,7 @@
 $(function() {
 
     // trigger fail, end
-    if ( !(triggerCode == 200 || handleCode != 0) ) {
+    if ( !(triggerCode == 0 || handleCode != 0) ) {
         $('#logConsoleRunning').hide();
         $('#logConsole').append('<span style="color: red;">'+ I18n.joblog_rolling_log_triggerfail +'</span>');
         return;
@@ -31,7 +31,7 @@ $(function() {
             dataType : "json",
             success : function(data){
 
-                if (data.code == 200) {
+                if (data.code == 0) {
                     if (!data.content) {
                         console.log('pullLog fail');
                         return;

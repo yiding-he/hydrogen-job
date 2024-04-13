@@ -126,7 +126,7 @@ $(function() {
 				},
 				dataType : "json",
 				success : function(data){
-					if (data.code == 200) {
+					if (data.code == 0) {
                         layer.msg( I18n.system_success );
 						userListTable.fnDraw(false);
 					} else {
@@ -208,7 +208,7 @@ $(function() {
 			};
 
         	$.post(base_url + "/user/add", paramData, function(data, status) {
-    			if (data.code == "200") {
+    			if (data.code == 0) {
 					$('#addModal').modal('hide');
 
                     layer.msg( I18n.system_add_suc );
@@ -300,7 +300,7 @@ $(function() {
             };
 
             $.post(base_url + "/user/update", paramData, function(data, status) {
-                if (data.code == "200") {
+                if (data.code == 0) {
                     $('#updateModal').modal('hide');
 
                     layer.msg( I18n.system_update_suc );

@@ -1,6 +1,6 @@
 package com.hyd.job.server.domain;
 
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
 import org.springframework.lang.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,10 +10,9 @@ import java.util.stream.Stream;
 
 import static java.util.Collections.emptyList;
 
-@RequiredArgsConstructor
-public class UserForSpringSecurity implements UserDetails {
-
-  private final @Nullable User user;
+public record UserForSpringSecurity(
+  @Nullable @Getter User user
+) implements UserDetails {
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -54,5 +53,15 @@ public class UserForSpringSecurity implements UserDetails {
   @Override
   public boolean isEnabled() {
     return true;
+  }
+
+  @Override
+  public String toString() {
+    return "UserForSpringSecurity{" +
+           (user != null ? (
+             "userName=" + user.getUserName() +
+             ", userId=" + user.getUserId()
+           ) : "") +
+           '}';
   }
 }

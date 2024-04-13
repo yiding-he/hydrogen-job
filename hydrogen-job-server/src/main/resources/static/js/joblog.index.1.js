@@ -10,7 +10,7 @@ $(function() {
 			data : {"jobGroup":jobGroup},
 			dataType : "json",
 			success : function(data){
-				if (data.code == 200) {
+				if (data.code == 0) {
 					$("#jobId").html( '<option value="0" >'+ I18n.system_all +'</option>' );
 					$.each(data.content, function (n, value) {
                         $("#jobId").append('<option value="' + value.id + '" >' + value.jobDesc + '</option>');
@@ -124,7 +124,7 @@ $(function() {
                         "width":'10%',
 						"render": function ( data, type, row ) {
 							var html = data;
-							if (data == 200) {
+							if (data == 0) {
 								html = '<span style="color: green">'+ I18n.system_success +'</span>';
 							} else if (data == 500) {
 								html = '<span style="color: red">'+ I18n.system_fail +'</span>';
@@ -153,7 +153,7 @@ $(function() {
                         "width":'10%',
 						"render": function ( data, type, row ) {
                             var html = data;
-                            if (data == 200) {
+                            if (data == 0) {
                                 html = '<span style="color: green">'+ I18n.joblog_handleCode_200 +'</span>';
                             } else if (data == 500) {
                                 html = '<span style="color: red">'+ I18n.joblog_handleCode_500 +'</span>';
@@ -179,7 +179,7 @@ $(function() {
 	                	"render": function ( data, type, row ) {
 	                		// better support expression or string, not function
 	                		return function () {
-		                		if (row.triggerCode == 200 || row.handleCode != 0){
+		                		if (row.triggerCode == 0 || row.handleCode != 0){
 
 		                			/*var temp = '<a href="javascript:;" class="logDetail" _id="'+ row.id +'">'+ I18n.joblog_rolling_log +'</a>';
 		                			if(row.handleCode == 0){
@@ -238,7 +238,7 @@ $(function() {
         }
 	});
     logTable.on('xhr.dt',function(e, settings, json, xhr) {
-        if (json.code && json.code != 200) {
+        if (json.code && json.code != 0) {
             layer.msg( json.msg || I18n.system_api_error );
         }
     });
@@ -281,7 +281,7 @@ $(function() {
                 data : {"id":_id},
                 dataType : "json",
                 success : function(data){
-                    if (data.code == 200) {
+                    if (data.code == 0) {
                         layer.open({
                             title: I18n.system_tips,
                             btn: [ I18n.system_ok ],
@@ -327,7 +327,7 @@ $(function() {
 	});
 	$("#clearLogModal .ok").on('click', function(){
 		$.post(base_url + "/joblog/clearLog",  $("#clearLogModal .form").serialize(), function(data, status) {
-			if (data.code == "200") {
+			if (data.code == 0) {
 				$('#clearLogModal').modal('hide');
 				layer.open({
 					title: I18n.system_tips ,

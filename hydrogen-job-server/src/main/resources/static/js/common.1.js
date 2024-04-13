@@ -10,7 +10,7 @@ $(function(){
 			layer.close(index);
 
 			$.post(base_url + "/logout", function(data, status) {
-				if (data.code == "200") {
+				if (data.code == 0) {
                     layer.msg( I18n.logout_success );
                     setTimeout(function(){
                         window.location.href = base_url + "/";
@@ -122,13 +122,13 @@ $(function(){
         },
         submitHandler : function(form) {
             $.post(base_url + "/user/updatePwd",  $("#updatePwdModal .form").serialize(), function(data, status) {
-                if (data.code == 200) {
+                if (data.code == 0) {
                     $('#updatePwdModal').modal('hide');
 
                     layer.msg( I18n.change_pwd_suc_to_logout );
                     setTimeout(function(){
                         $.post(base_url + "/logout", function(data, status) {
-                            if (data.code == 200) {
+                            if (data.code == 0) {
                                 window.location.href = base_url + "/";
                             } else {
                                 layer.open({

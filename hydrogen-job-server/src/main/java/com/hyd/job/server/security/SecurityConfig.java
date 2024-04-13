@@ -68,6 +68,7 @@ public class SecurityConfig {
     HttpServletRequest request, HttpServletResponse response, Authentication authentication
   ) throws IOException {
     log.info("User logged in: {}", authentication.getPrincipal());
+    request.getSession().setAttribute("user", ((UserForSpringSecurity)authentication.getPrincipal()).getUser());
     response.setContentType(MimeTypeUtils.APPLICATION_JSON_VALUE);
     response.getWriter().write(Jackson.serializeStandardJson(Map.of(
       "code", "200",

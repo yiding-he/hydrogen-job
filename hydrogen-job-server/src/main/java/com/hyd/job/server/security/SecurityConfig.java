@@ -1,5 +1,6 @@
 package com.hyd.job.server.security;
 
+import com.hyd.job.server.domain.ResponseData;
 import com.hyd.job.server.domain.User;
 import com.hyd.job.server.domain.UserForSpringSecurity;
 import com.hyd.job.server.repositories.UserRepository;
@@ -23,7 +24,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.util.MimeTypeUtils;
 
 import java.io.IOException;
-import java.util.Map;
 
 @Slf4j
 @Configuration
@@ -70,10 +70,7 @@ public class SecurityConfig {
     log.info("User logged in: {}", authentication.getPrincipal());
     request.getSession().setAttribute("user", ((UserForSpringSecurity)authentication.getPrincipal()).getUser());
     response.setContentType(MimeTypeUtils.APPLICATION_JSON_VALUE);
-    response.getWriter().write(Jackson.serializeStandardJson(Map.of(
-      "code", "200",
-      "message", "Login success"
-    )));
+    response.getWriter().write(Jackson.serializeStandardJson(ResponseData.success()));
     response.setStatus(HttpStatus.OK.value());
   }
 

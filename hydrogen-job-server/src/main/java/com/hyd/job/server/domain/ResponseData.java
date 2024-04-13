@@ -12,11 +12,15 @@ public class ResponseData<T> {
   public static final int SUCCESS_CODE = 0;
 
   public static <D> ResponseData<D> success() {
-    return new ResponseData<>(0, "success", null);
+    return new ResponseData<>(0, "", null);
   }
 
-  public static <D> ResponseData<D> success(String msg) {
-    return new ResponseData<>(0, msg, null);
+  public static <D> ResponseData<D> success(D content) {
+    return new ResponseData<>(0, "", content);
+  }
+
+  public static <D> ResponseData<D> success(String msg, D content) {
+    return new ResponseData<>(0, msg, content);
   }
 
   ////////////////////////////////////////

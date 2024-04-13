@@ -22,22 +22,14 @@ $(function() {
 	    //"scrollX": true,	// scroll x，close self-adaption
 	    "columns": [
 	                {
-	                	"data": 'id',
-						"visible" : false,
-						"width":'10%'
-					},
-	                {
-	                	"data": 'username',
+	                	"data": 'userId',
 						"visible" : true,
-						"width":'20%'
+						"width":'7%'
 					},
 	                {
-	                	"data": 'password',
-						"visible" : false,
-                        "width":'20%',
-                        "render": function ( data, type, row ) {
-                            return '*********';
-                        }
+	                	"data": 'userName',
+						"visible" : true,
+						"width":''
 					},
 					{
 						"data": 'role',
@@ -52,13 +44,8 @@ $(function() {
                         }
 					},
 	                {
-	                	"data": 'permission',
-						"width":'10%',
-	                	"visible" : false
-	                },
-	                {
 						"data": I18n.system_opt ,
-						"width":'15%',
+						"width":'200',
 	                	"render": function ( data, type, row ) {
 	                		return function(){
 								// html

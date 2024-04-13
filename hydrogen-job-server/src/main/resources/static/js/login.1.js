@@ -46,11 +46,11 @@ $(function(){
             element.parent('div').append(error);  
         },
         submitHandler : function(form) {
-			$.post(base_url + "/admin/login-process", $("#loginForm").serialize(), function(data, status) {
+			$.post(base_url + "/login-process", $("#loginForm").serialize(), function(data, status) {
 				if (data.code === 0) {
                     layer.msg( I18n.login_success );
                     setTimeout(function(){
-                        window.location.href = base_url + "/admin/";
+                        window.location.href = base_url + "/";
                     }, 500);
 				} else {
                     layer.open({

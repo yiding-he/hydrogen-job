@@ -6,7 +6,7 @@
   <!-- DataTables -->
   <link rel="stylesheet"
         href="${request.contextPath}/static/adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-  <title>${I18n.admin_name}</title>
+  <title>${bundle.admin_name}</title>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -19,7 +19,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>${I18n.user_manage}</h1>
+      <h1>${bundle.user_manage}</h1>
     </section>
 
     <!-- Main content -->
@@ -27,25 +27,25 @@
       <div class="row table-query">
         <div class="col-xs-3">
           <div class="input-group">
-            <span class="input-group-addon">${I18n.user_role}</span>
+            <span class="input-group-addon">${bundle.user_role}</span>
             <select class="form-control" id="role">
-              <option value="-1">${I18n.system_all}</option>
-              <option value="1">${I18n.user_role_admin}</option>
-              <option value="0">${I18n.user_role_normal}</option>
+              <option value="-1">${bundle.system_all}</option>
+              <option value="1">${bundle.user_role_admin}</option>
+              <option value="0">${bundle.user_role_normal}</option>
             </select>
           </div>
         </div>
         <div class="col-xs-3">
           <div class="input-group">
-            <span class="input-group-addon">${I18n.user_username}</span>
+            <span class="input-group-addon">${bundle.user_username}</span>
             <input type="text" class="form-control" id="username" autocomplete="on">
           </div>
         </div>
         <div class="col-xs-1">
-          <button class="btn btn-block btn-info" id="searchBtn">${I18n.system_search}</button>
+          <button class="btn btn-block btn-info" id="searchBtn">${bundle.system_search}</button>
         </div>
         <div class="col-xs-2">
-          <button class="btn btn-block btn-success add" type="button">${I18n.user_add}</button>
+          <button class="btn btn-block btn-success add" type="button">${bundle.user_add}</button>
         </div>
       </div>
 
@@ -57,9 +57,9 @@
                 <thead>
                 <tr>
                   <th name="id">ID</th>
-                  <th name="username">${I18n.user_username}</th>
-                  <th name="role">${I18n.user_role}</th>
-                  <th>${I18n.system_opt}</th>
+                  <th name="username">${bundle.user_username}</th>
+                  <th name="role">${bundle.user_role}</th>
+                  <th>${bundle.system_opt}</th>
                 </tr>
                 </thead>
                 <tbody></tbody>
@@ -81,37 +81,37 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">${I18n.user_add}</h4>
+        <h4 class="modal-title">${bundle.user_add}</h4>
       </div>
       <form class="form-horizontal form" role="form">
         <div class="modal-body">
           <div class="form-group">
-            <label for="lastname" class="col-sm-2 control-label required">${I18n.user_username}</label>
+            <label for="lastname" class="col-sm-2 control-label required">${bundle.user_username}</label>
             <div class="col-sm-9"><input type="text" class="form-control" name="username"
-                                         placeholder="${I18n.system_please_input}${I18n.user_username}" maxlength="50">
+                                         placeholder="${bundle.system_please_input}${bundle.user_username}" maxlength="50">
             </div>
           </div>
           <div class="form-group">
-            <label for="lastname" class="col-sm-2 control-label required">${I18n.user_password}</label>
+            <label for="lastname" class="col-sm-2 control-label required">${bundle.user_password}</label>
             <div class="col-sm-9"><input type="text" class="form-control" name="password"
-                                         placeholder="${I18n.system_please_input}${I18n.user_password}" maxlength="50">
+                                         placeholder="${bundle.system_please_input}${bundle.user_password}" maxlength="50">
             </div>
           </div>
           <div class="form-group">
-            <label for="lastname" class="col-sm-2 control-label required">${I18n.product}</label>
+            <label for="lastname" class="col-sm-2 control-label required">${bundle.product}</label>
             <div class="col-sm-9"><input type="text" class="form-control" name="password"
-                                         placeholder="${I18n.system_please_input}${I18n.product}" maxlength="50"></div>
+                                         placeholder="${bundle.system_please_input}${bundle.product}" maxlength="50"></div>
           </div>
           <div class="form-group">
-            <label for="lastname" class="col-sm-2 control-label">${I18n.product_line}</label>
+            <label for="lastname" class="col-sm-2 control-label">${bundle.product_line}</label>
             <div class="col-sm-9"><input type="text" class="form-control" name="password"
-                                         placeholder="${I18n.system_please_input}${I18n.product_line}" maxlength="50">
+                                         placeholder="${bundle.system_please_input}${bundle.product_line}" maxlength="50">
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">${I18n.system_save}</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">${I18n.system_cancel}</button>
+          <button type="submit" class="btn btn-primary">${bundle.system_save}</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">${bundle.system_cancel}</button>
         </div>
       </form>
     </div>
@@ -123,31 +123,31 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">${I18n.user_update}</h4>
+        <h4 class="modal-title">${bundle.user_update}</h4>
       </div>
       <div class="modal-body">
         <form class="form-horizontal form" role="form">
           <div class="form-group">
-            <label for="lastname" class="col-sm-2 control-label">${I18n.user_username}<font color="red">*</font></label>
+            <label for="lastname" class="col-sm-2 control-label">${bundle.user_username}<font color="red">*</font></label>
             <div class="col-sm-8"><input type="text" class="form-control" name="username"
-                                         placeholder="${I18n.system_please_input}${I18n.user_username}" maxlength="20"
+                                         placeholder="${bundle.system_please_input}${bundle.user_username}" maxlength="20"
                                          readonly></div>
           </div>
           <div class="form-group">
-            <label for="lastname" class="col-sm-2 control-label">${I18n.user_password}<font color="red">*</font></label>
+            <label for="lastname" class="col-sm-2 control-label">${bundle.user_password}<font color="red">*</font></label>
             <div class="col-sm-8"><input type="text" class="form-control" name="password"
-                                         placeholder="${I18n.user_password_update_placeholder}" maxlength="20"></div>
+                                         placeholder="${bundle.user_password_update_placeholder}" maxlength="20"></div>
           </div>
           <div class="form-group">
-            <label for="lastname" class="col-sm-2 control-label">${I18n.user_role}<font color="red">*</font></label>
+            <label for="lastname" class="col-sm-2 control-label">${bundle.user_role}<font color="red">*</font></label>
             <div class="col-sm-10">
-              <input type="radio" name="role" value="0"/>${I18n.user_role_normal}
+              <input type="radio" name="role" value="0"/>${bundle.user_role_normal}
               &nbsp;&nbsp;&nbsp;&nbsp;
-              <input type="radio" name="role" value="1"/>${I18n.user_role_admin}
+              <input type="radio" name="role" value="1"/>${bundle.user_role_admin}
             </div>
           </div>
           <div class="form-group">
-            <label for="lastname" class="col-sm-2 control-label">${I18n.user_permission}<font
+            <label for="lastname" class="col-sm-2 control-label">${bundle.user_permission}<font
                 color="black">*</font></label>
             <div class="col-sm-10">
               <#if groupList?exists && groupList?size gt 0>
@@ -161,8 +161,8 @@
           <hr>
           <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
-              <button type="submit" class="btn btn-primary">${I18n.system_save}</button>
-              <button type="button" class="btn btn-default" data-dismiss="modal">${I18n.system_cancel}</button>
+              <button type="submit" class="btn btn-primary">${bundle.system_save}</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">${bundle.system_cancel}</button>
               <input type="hidden" name="id">
             </div>
           </div>

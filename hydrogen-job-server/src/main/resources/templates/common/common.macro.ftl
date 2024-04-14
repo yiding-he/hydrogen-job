@@ -72,7 +72,7 @@
 			<span class="logo-mini" style="display: inline;"><img
           style="max-width: 26pt; max-height: 26pt; margin-bottom: 2pt;"
           src="${request.contextPath}/static/favicon.png" alt="logo"></span>
-      <span class="logo-lg" style="display: inline"><b>${I18n.admin_name}</b></span>
+      <span class="logo-lg" style="display: inline"><b>${bundle.admin_name}</b></span>
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
 
@@ -88,12 +88,12 @@
           <#-- login user -->
           <li class="dropdown">
             <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-              ${I18n.system_welcome} ${user.userName}
+              ${bundle.system_welcome} ${user.userName}
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
-              <li id="updatePwd"><a href="javascript:">${I18n.change_pwd}</a></li>
-              <li id="logoutBtn"><a href="javascript:">${I18n.logout_btn}</a></li>
+              <li id="updatePwd"><a href="javascript:">${bundle.change_pwd}</a></li>
+              <li id="logoutBtn"><a href="javascript:">${bundle.logout_btn}</a></li>
             </ul>
           </li>
         </ul>
@@ -107,22 +107,22 @@
     <div class="modal-dialog ">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">${I18n.change_pwd}</h4>
+          <h4 class="modal-title">${bundle.change_pwd}</h4>
         </div>
         <div class="modal-body">
           <form class="form-horizontal form" role="form">
             <div class="form-group">
-              <label for="lastname" class="col-sm-2 control-label">${I18n.change_pwd_field_newpwd}<font
+              <label for="lastname" class="col-sm-2 control-label">${bundle.change_pwd_field_newpwd}<font
                   color="red">*</font></label>
               <div class="col-sm-10"><input type="text" class="form-control" name="password"
-                                            placeholder="${I18n.system_please_input} ${I18n.change_pwd_field_newpwd}"
+                                            placeholder="${bundle.system_please_input} ${bundle.change_pwd_field_newpwd}"
                                             maxlength="18"></div>
             </div>
             <hr>
             <div class="form-group">
               <div class="col-sm-offset-3 col-sm-6">
-                <button type="submit" class="btn btn-primary">${I18n.system_save}</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">${I18n.system_cancel}</button>
+                <button type="submit" class="btn btn-primary">${bundle.system_save}</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">${bundle.system_cancel}</button>
               </div>
             </div>
           </form>
@@ -140,31 +140,31 @@
     <section class="sidebar">
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
-        <li class="header">${I18n.system_nav}</li>
+        <li class="header">${bundle.system_nav}</li>
         <li class="nav-click <#if pageName == "index">active</#if>"><a href="${request.contextPath}/admin/"><i
-              class="fa fa-circle-o text-aqua"></i><span>${I18n.job_dashboard_name}</span></a></li>
+              class="fa fa-circle-o text-aqua"></i><span>${bundle.job_dashboard_name}</span></a></li>
         <li class="nav-click <#if pageName == "jobinfo">active</#if>"><a href="${request.contextPath}/admin/jobinfo"><i
-              class="fa fa-circle-o text-yellow"></i><span>${I18n.jobinfo_name}</span></a></li>
+              class="fa fa-circle-o text-yellow"></i><span>${bundle.jobinfo_name}</span></a></li>
         <li class="nav-click <#if pageName == "joblog">active</#if>"><a href="${request.contextPath}/admin/joblog"><i
-              class="fa fa-circle-o text-green"></i><span>${I18n.joblog_name}</span></a></li>
+              class="fa fa-circle-o text-green"></i><span>${bundle.joblog_name}</span></a></li>
 
         <#if user.userName == "admin">
           <li class="nav-click <#if pageName == "jobgroup">active</#if>"><a
               href="${request.contextPath}/admin/jobgroup"><i
-                class="fa fa-circle-o text-red"></i><span>${I18n.jobgroup_name}</span></a></li>
+                class="fa fa-circle-o text-red"></i><span>${bundle.jobgroup_name}</span></a></li>
           <li class="nav-click <#if pageName == "user">active</#if>"><a
               href="${request.contextPath}/admin/user"><i
-                class="fa fa-circle-o text-purple"></i><span>${I18n.user_manage}</span></a></li>
+                class="fa fa-circle-o text-purple"></i><span>${bundle.user_manage}</span></a></li>
           <li class="nav-click <#if pageName == "product">active</#if>"><a
               href="${request.contextPath}/admin/product"><i
-                class="fa fa-circle-o text-purple"></i><span>${I18n.product_manage}</span></a></li>
+                class="fa fa-circle-o text-fuchsia"></i><span>${bundle.product_manage}</span></a></li>
           <li class="nav-click <#if pageName == "product_line">active</#if>"><a
               href="${request.contextPath}/admin/product_line"><i
-                class="fa fa-circle-o text-purple"></i><span>${I18n.product_line_manage}</span></a></li>
+                class="fa fa-circle-o text-olive"></i><span>${bundle.product_line_manage}</span></a></li>
         </#if>
 
         <li class="nav-click <#if pageName == "help">active</#if>"><a href="${request.contextPath}/admin/help"><i
-              class="fa fa-circle-o text-gray"></i><span>${I18n.job_help}</span></a></li>
+              class="fa fa-circle-o text-gray"></i><span>${bundle.job_help}</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -250,7 +250,7 @@
 
 <#macro commonFooter >
   <footer class="main-footer">
-    Powered by <b>XXL-JOB</b> ${I18n.admin_version}
+    Powered by <b>XXL-JOB</b> ${bundle.admin_version}
     <div class="pull-right hidden-xs">
       <strong>Copyright &copy; 2015-${.now?string('yyyy')} &nbsp;
         <a href="https://www.xuxueli.com/" target="_blank">xuxueli</a>

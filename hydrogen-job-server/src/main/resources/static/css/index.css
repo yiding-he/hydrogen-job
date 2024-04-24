@@ -1,0 +1,9 @@
+@import "default.css";
+
+main {
+    padding: var(--basic-padding);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--basic-padding);
+}

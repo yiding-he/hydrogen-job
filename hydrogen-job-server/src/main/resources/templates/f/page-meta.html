@@ -1,0 +1,10 @@
+<th:block th:fragment="meta (pagename)">
+    <link rel="icon" th:href="@{/static/favicon.png}" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/static/css/{file}.css(file=${pagename})}">
+    <script th:src="@{/static/js/jquery-3.7.1.js}" type="application/javascript"></script>
+    <script th:src="@{/static/js/{file}.js(file=${pagename})}" type="application/javascript"></script>
+</th:block>

@@ -1,7 +1,9 @@
 :root {
+    --basic-font-size: 14px;
     --basic-gap-h: 10px;
     --basic-gap-v: 5px;
     --basic-padding: var(--basic-gap-v) var(--basic-gap-h);
+    --basic-padding-pressed: calc(var(--basic-gap-v) + 1px) var(--basic-gap-h) calc(var(--basic-gap-v) - 1px);
     --field-text-padding: 3px 6px;
     --field-text-border-color: #CCCCCC;
     --color-primary: #007bff;
@@ -13,6 +15,15 @@
 
 html * {
     font-family: var(--font-family-default);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
 }
 
 button.primary {
@@ -56,6 +67,44 @@ button.primary {
     justify-content: flex-end;
 }
 
+button {
+    padding: var(--basic-padding);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    filter: brightness(110%);
+}
+
+button:active {
+    padding: var(--basic-padding-pressed);
+}
+
 ::placeholder {
     color: #AAAAAA;
+}
+
+input {
+    border: 1px solid var(--field-text-border-color);
+    width: 250px;
+    box-sizing: border-box;
+    margin-bottom: var(--basic-gap-v);
+    padding: var(--field-text-padding);
+}
+
+body>header {
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ccc;
+    padding: var(--basic-padding);
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    font-size: var(--basic-font-size);
+}
+
+body>header .title {
+    font-weight: bold;
 }

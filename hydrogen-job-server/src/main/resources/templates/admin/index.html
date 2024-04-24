@@ -1,14 +1,22 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <th:block th:replace="~{f/page-meta::meta(pagename='index')}"/>
     <title th:text="#{index_page_title}"></title>
-    <link rel="stylesheet" href="" th:href="@{/static/index.css}">
 </head>
 <body>
-<h1 th:text="#{index_page_title}"></h1>
+<header>
+    <span class="title" th:text="#{index_page_title}"></span>
+    <span>
+        <span th:text="#{welcome(${session.user.userName})}"></span>
+        <a th:href="@{/admin/logout}" th:text="#{logout}"></a>
+    </span>
+</header>
+<main>
+    <button class="primary">产品管理</button>
+    <button class="primary">产线管理</button>
+    <button class="primary">用户管理</button>
+    <button class="primary">任务管理</button>
+</main>
 </body>
 </html>

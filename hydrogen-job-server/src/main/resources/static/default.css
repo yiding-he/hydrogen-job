@@ -1,34 +1,61 @@
-label.required:before {
-    content: "*";
-    color: red;
+:root {
+    --basic-gap-h: 10px;
+    --basic-gap-v: 5px;
+    --basic-padding: var(--basic-gap-v) var(--basic-gap-h);
+    --field-text-padding: 3px 6px;
+    --field-text-border-color: #CCCCCC;
+    --color-primary: #007bff;
+    --color-success: #28a745;
+    --color-warning: #ffc107;
+    --color-danger: #dc3545;
+    --font-family-default: Arial, sans-serif;
 }
 
-form.form hr {
-    border-color: #DDD;
+html * {
+    font-family: var(--font-family-default);
 }
 
-.form-group {
-    margin-bottom: 10px;
+button.primary {
+    color: #fff;
+    background-color: var(--color-primary);
 }
 
-.modal-footer {
-    background-color: #f5f5f5;
-    border-top-color: #ddd;
-    padding: 10px 15px;
+.panel {
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.modal-header {
+.panel header {
     background-color: #f5f5f5;
     border-bottom-color: #ddd;
-    padding: 10px 15px;
+    padding: var(--basic-padding);
 }
 
-.modal-header .modal-title {
+.panel header .title {
     font-size: 14px;
     font-weight: bold;
     color: #666;
 }
 
-.table-query {
-    margin-bottom: 10px;
+.panel main {
+    display: flex;
+    flex-direction: column;
+    padding: var(--basic-padding);
+}
+
+.panel footer {
+    background-color: #f5f5f5;
+    border-top-color: #ddd;
+    padding: var(--basic-padding);
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+::placeholder {
+    color: #AAAAAA;
 }

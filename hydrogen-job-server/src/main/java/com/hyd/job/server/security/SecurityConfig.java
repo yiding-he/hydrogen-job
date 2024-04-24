@@ -1,10 +1,8 @@
 package com.hyd.job.server.security;
 
-import com.hyd.job.server.domain.ResponseData;
 import com.hyd.job.server.domain.User;
 import com.hyd.job.server.domain.UserForSpringSecurity;
 import com.hyd.job.server.repositories.UserRepository;
-import com.hyd.job.server.utilities.Jackson;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +19,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.util.MimeTypeUtils;
 
 import java.io.IOException;
 
@@ -69,9 +66,7 @@ public class SecurityConfig {
   ) throws IOException {
     log.info("User logged in: {}", authentication.getPrincipal());
     request.getSession().setAttribute("user", ((UserForSpringSecurity)authentication.getPrincipal()).getUser());
-    response.setContentType(MimeTypeUtils.APPLICATION_JSON_VALUE);
-    response.getWriter().write(Jackson.serializeStandardJson(ResponseData.success()));
-    response.setStatus(HttpStatus.OK.value());
+    response.sendRedirect("index");
   }
 
   ///////////////////////

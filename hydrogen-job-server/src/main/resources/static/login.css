@@ -1,0 +1,24 @@
+@import "default.css";
+
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    border: 1px solid var(--field-text-border-color);
+    width: 250px;
+    box-sizing: border-box;
+    margin-bottom: var(--basic-gap-v);
+    padding: var(--field-text-padding);
+}
+
+button {
+    padding: var(--basic-padding);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

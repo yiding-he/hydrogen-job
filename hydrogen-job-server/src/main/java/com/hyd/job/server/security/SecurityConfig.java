@@ -66,6 +66,8 @@ public class SecurityConfig {
   ) throws IOException {
     log.info("User logged in: {}", authentication.getPrincipal());
     request.getSession().setAttribute("user", ((UserForSpringSecurity)authentication.getPrincipal()).getUser());
+    response.setContentType("text/plain");
+    response.getWriter().write("");
     response.sendRedirect("index");
   }
 

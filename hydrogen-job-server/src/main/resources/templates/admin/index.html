@@ -13,10 +13,9 @@
     </span>
 </header>
 <main>
-    <button class="primary">产品管理</button>
-    <button class="primary">产线管理</button>
-    <button class="primary">用户管理</button>
-    <button class="primary">任务管理</button>
+    <div class="tree">
+        <th:block th:replace="~{f/menu::menu(${menuItems})}"/>
+    </div>
 </main>
 </body>
 </html>

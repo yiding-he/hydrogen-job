@@ -4,6 +4,9 @@
     --basic-gap-v: 5px;
     --basic-padding: var(--basic-gap-v) var(--basic-gap-h);
     --basic-padding-pressed: calc(var(--basic-gap-v) + 1px) var(--basic-gap-h) calc(var(--basic-gap-v) - 1px);
+    --more-gap-h: calc(var(--basic-gap-h) + 5px);
+    --more-gap-v: calc(var(--basic-gap-v) + 5px);
+    --more-padding: var(--more-gap-v) var(--more-gap-h);
     --field-text-padding: 3px 6px;
     --field-text-border-color: #CCCCCC;
     --color-primary: #007bff;

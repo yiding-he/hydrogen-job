@@ -1,5 +1,6 @@
 package com.hyd.job.server.webmvc;
 
+import com.hyd.job.server.domain.MenuItem;
 import com.hyd.job.server.domain.PageData;
 import com.hyd.job.server.domain.ResponseData;
 import com.hyd.job.server.domain.User;
@@ -37,9 +38,20 @@ public class AdminController {
   @RequestMapping({"/index", "/"})
   public ModelAndView index() {
     return new ModelAndView("/admin/index")
-      .addObject("jobInfoCount", 100)
-      .addObject("jobLogCount", 100)
-      .addObject("executorCount", 100)
+      .addObject("menuItems", List.of(
+        new MenuItem("1", false, List.of(
+          new MenuItem("1.1", false, null),
+          new MenuItem("1.2", false, null),
+          new MenuItem("1.3", false, List.of(
+            new MenuItem("1.3.1", false, null),
+            new MenuItem("1.3.2", false, null)
+          ))
+        )),
+        new MenuItem("2", false, List.of(
+          new MenuItem("2.1", false, null),
+          new MenuItem("2.2", false, null)
+        ))
+      ))
       ;
   }
 
@@ -61,10 +73,10 @@ public class AdminController {
   @RequestMapping("/user/pageList")
   @ResponseBody
   public PageData<User> pageList(
-    @RequestParam(name="start", required = false, defaultValue = "0") int start,
-    @RequestParam(name="length", required = false, defaultValue = "10") int length,
-    @RequestParam(name="username", required = false, defaultValue = "") String username,
-    @RequestParam(name="role", required = false, defaultValue = "0") int role
+    @RequestParam(name = "start", required = false, defaultValue = "0") int start,
+    @RequestParam(name = "length", required = false, defaultValue = "10") int length,
+    @RequestParam(name = "username", required = false, defaultValue = "") String username,
+    @RequestParam(name = "role", required = false, defaultValue = "0") int role
   ) {
     return new PageData<>(1, 1, List.of(
       new User(0, "admin", "admin", "admin@admin.com", "admin", "admin", null, null)

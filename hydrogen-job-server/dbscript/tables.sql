@@ -4,8 +4,8 @@ create table users
     user_name  varchar(50) not null unique,
     password   varchar(50) not null,
     email      varchar(50) not null unique,
-    product    varchar(50) not null,
-    line       varchar(50) not null,
+    product_id int         not null,
+    line_id    int         not null,
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp on update current_timestamp
 )

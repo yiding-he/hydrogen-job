@@ -6,11 +6,11 @@ import org.springframework.security.core.GrantedAuthority;
 
 public record AuthForSpringSecurity(
   @NonNull @Getter AuthorityType type,
-  @NonNull @Getter String name
+  @NonNull @Getter Long id
 ) implements GrantedAuthority {
 
   @Override
   public String getAuthority() {
-    return type.name() + ":" + name;
+    return type.name() + ":" + id;
   }
 }

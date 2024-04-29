@@ -57,7 +57,7 @@ public class SecurityConfig {
   private void onLoginFail(
     HttpServletRequest request, HttpServletResponse response, AuthenticationException exception
   ) {
-    log.info("User login failed", exception);
+    log.info("User login failed: {}", exception.toString());
     response.setStatus(HttpStatus.UNAUTHORIZED.value());
   }
 
@@ -65,7 +65,8 @@ public class SecurityConfig {
     HttpServletRequest request, HttpServletResponse response, Authentication authentication
   ) throws IOException {
     log.info("User logged in: {}", authentication.getPrincipal());
-    request.getSession().setAttribute("user", ((UserForSpringSecurity)authentication.getPrincipal()).getUser());
+    UserForSpringSecurity sUser = (UserForSpringSecurity) authentication.getPrincipal();
+    request.getSession().setAttribute("user", sUser.getUser());
     response.setContentType("text/plain");
     response.getWriter().write("");
     response.sendRedirect("index");
@@ -88,8 +89,8 @@ public class SecurityConfig {
         user = new User();
         user.setUserName(username);
         user.setPassword(passwordEncoder.encode(username));
-        user.setProduct("*");
-        user.setLine("*");
+        user.setProductId(User.ALL_PRODUCT);
+        user.setLineId(User.ALL_LINE);
       } else {
         user = userMapper.findByUsername(username);
       }

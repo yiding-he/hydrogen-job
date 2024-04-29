@@ -1,9 +1,7 @@
 package com.hyd.job.server.webmvc;
 
 import com.hyd.job.server.domain.MenuItem;
-import com.hyd.job.server.domain.PageData;
 import com.hyd.job.server.domain.ResponseData;
-import com.hyd.job.server.domain.User;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
@@ -65,21 +63,4 @@ public class AdminController {
 
   //////////////////////////////////////// User
 
-  @RequestMapping("/user")
-  public ModelAndView user() {
-    return new ModelAndView("/admin/user");
-  }
-
-  @RequestMapping("/user/pageList")
-  @ResponseBody
-  public PageData<User> pageList(
-    @RequestParam(name = "start", required = false, defaultValue = "0") int start,
-    @RequestParam(name = "length", required = false, defaultValue = "10") int length,
-    @RequestParam(name = "username", required = false, defaultValue = "") String username,
-    @RequestParam(name = "role", required = false, defaultValue = "0") int role
-  ) {
-    return new PageData<>(1, 1, List.of(
-      new User(0, "admin", "admin", "admin@admin.com", "admin", "admin", null, null)
-    ));
-  }
 }

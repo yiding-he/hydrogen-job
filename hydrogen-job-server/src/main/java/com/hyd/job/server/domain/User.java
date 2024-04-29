@@ -13,6 +13,10 @@ public class User {
 
   public static final String ANONYMOUS_USER_NAME = "anonymous";
 
+  public static final long ALL_PRODUCT = 0;
+
+  public static final long ALL_LINE = 0;
+
   private long userId;
 
   private String userName;
@@ -21,9 +25,9 @@ public class User {
 
   private String email;
 
-  private String product;
+  private long productId;
 
-  private String line;
+  private long lineId;
 
   private Date createdAt;
 

@@ -20,8 +20,8 @@ public record UserForSpringSecurity(
       return emptyList();
     }
     return Stream.of(
-      new AuthForSpringSecurity(AuthorityType.Product, user.getProduct()),
-      new AuthForSpringSecurity(AuthorityType.Line, user.getLine())
+      new AuthForSpringSecurity(AuthorityType.Product, user.getProductId()),
+      new AuthForSpringSecurity(AuthorityType.Line, user.getLineId())
     ).toList();
   }
 
@@ -64,4 +64,5 @@ public record UserForSpringSecurity(
            ) : "") +
            '}';
   }
+
 }

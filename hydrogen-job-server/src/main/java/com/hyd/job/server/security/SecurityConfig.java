@@ -2,7 +2,7 @@ package com.hyd.job.server.security;
 
 import com.hyd.job.server.domain.User;
 import com.hyd.job.server.domain.UserForSpringSecurity;
-import com.hyd.job.server.repositories.UserRepository;
+import com.hyd.job.server.mapper.UserMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +28,7 @@ import java.io.IOException;
 public class SecurityConfig {
 
   @Autowired
-  private UserRepository userRepository;
+  private UserMapper userMapper;
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -91,7 +91,7 @@ public class SecurityConfig {
         user.setProduct("*");
         user.setLine("*");
       } else {
-        user = userRepository.findByUserName(username);
+        user = userMapper.findByUsername(username);
       }
 
       return new UserForSpringSecurity(user);

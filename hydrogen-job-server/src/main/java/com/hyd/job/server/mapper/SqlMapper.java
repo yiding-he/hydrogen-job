@@ -3,6 +3,7 @@ package com.hyd.job.server.mapper;
 import com.hyd.job.server.sql.Row;
 import com.hyd.job.server.sql.Sql;
 import com.hyd.job.server.sql.SqlCommand;
+import com.hyd.job.server.utilities.Snowflake;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.UpdateProvider;
@@ -11,6 +12,8 @@ import java.util.List;
 
 @Mapper
 public interface SqlMapper {
+
+  Snowflake snowflake = new Snowflake();
 
   ThreadLocal<String> statementThreadLocal = new ThreadLocal<>();
 
@@ -23,10 +26,19 @@ public interface SqlMapper {
 
   /////////////////////// 对 MyBatis 框架的封装
 
+  private static void fixAndSetupSql(String sql) {
+    int count = 0;
+    while (sql.contains("?")) {
+      sql = sql.replaceFirst("\\?", "#{list[" + count + "]}");
+      count++;
+    }
+    statementThreadLocal.set(sql);
+  }
+
   default int execute(SqlCommand command) {
     var sql = command.getStatement();
     var params = command.getParams();
-    statementThreadLocal.set(sql);
+    fixAndSetupSql(sql);
     return this.doExecute(params);
   }
 
@@ -45,7 +57,7 @@ public interface SqlMapper {
   default List<Row> query(SqlCommand command) {
     var sql = command.getStatement();
     var params = command.getParams();
-    statementThreadLocal.set(sql);
+    fixAndSetupSql(sql);
     return this.doQuery(params);
   }
 

@@ -40,7 +40,7 @@ public abstract class Sql<T extends Sql<?>> {
         }
 
         String str = obj.toString();
-        return hasText(str);
+        return !hasText(str);
     }
 
     public abstract SqlCommand toCommand();
@@ -425,7 +425,7 @@ public abstract class Sql<T extends Sql<?>> {
         public Insert OnDuplicateKeyUpdate(String... updateColumns) {
             this.onDuplicateKeyUpdate = true;
             this.duplicateKeyUpdateColumns = List.of(updateColumns);
-            this.suffix = hasText(this.suffix) ? "" : this.suffix;
+            this.suffix = hasText(this.suffix) ? this.suffix : "";
             this.suffix += Stream.of(updateColumns).map(c -> c + "=?").collect(Collectors.joining(","));
             return this;
         }

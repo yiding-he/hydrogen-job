@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="data-table" th:if="${table != null}">
+    <table class="data-table">
+        <thead>
+        <tr>
+            <th th:each="column : ${table.columns}" th:text="${column.label}" th:width="${column.width}"></th>
+            <th th:if="${!table.operations.isEmpty()}">&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="row : ${table.rows}">
+            <td th:each="column : ${table.columns}" th:text="${row.get(column.propertyName)}"></td>
+            <td th:if="${!table.operations.isEmpty()}" class="operations">
+                <a th:each="operation : ${table.operations.entrySet()}"
+                   th:text="${operation.value}" th:href="${operation.key + '?id=' + row.id}"></a>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot th:if="${table.pageInfo != null}">
+        <form action="">
+            <input type="hidden" name="conditions" th:value="${table.conditions}">
+            <input type="hidden" name="limit" th:value="${table.pageInfo.limit}">
+            <tr>
+                <td th:colspan="${table.columns.size() + table.operations.size()}">
+                    <button th:if="${table.pageInfo.index > 1}"
+                            name="index" th:value="${table.pageInfo.index - 1}">上一页</button>
+
+                    显示第 <span th:text="${table.pageInfo.index}"></span> /
+                    <span th:text="${table.pageInfo.totalPages}"></span> 页
+
+                    <button th:if="${table.pageInfo.index < table.pageInfo.totalPages}"
+                            name="index" th:value="${table.pageInfo.index + 1}">下一页</button>
+                </td>
+            </tr>
+        </form>
+        </tfoot>
+    </table>
+    <div th:if="${table.addButtonText != null}">
+        <a th:href="add">
+            <button class="pure-button pure-button-primary" th:text="${table.addButtonText}"></button></a>
+    </div>
+</div>
+</body>

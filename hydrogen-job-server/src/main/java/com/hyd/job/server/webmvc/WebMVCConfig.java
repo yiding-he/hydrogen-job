@@ -4,6 +4,7 @@ import com.hyd.job.server.i18n.LocaleUtil;
 import com.hyd.job.server.utilities.CSVReader;
 import com.hyd.job.server.utilities.Coll;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,5 +32,12 @@ public class WebMVCConfig implements WebMvcConfigurer {
       }
     }
     return messageSource;
+  }
+
+  @Bean
+  public ServletContextInitializer servletContextInitializer() {
+    return ctx -> {
+      log.info("Web application context initialized");
+    };
   }
 }

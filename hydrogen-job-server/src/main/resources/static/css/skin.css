@@ -1,0 +1,203 @@
+:root {
+    --background-main: #1b78bb;
+    --background-light: #7ab5de;
+    --background-bright: #ebf5ff;
+    --module-icon-color: #135f97;
+    --module-icon-color-active: #f8ff3e;
+    --background-dark: #135f97;
+    --shadow-dark: rgba(19, 95, 150, 100);
+    --top-bar-height: 60px;
+    --nav-bar-width: 150px;
+    --default-font-size: 10pt;
+}
+
+div, td, input, textarea, p, span, i {
+    font-size: var(--default-font-size);
+}
+
+input[type=text], input[type=password] {
+    border: 1px solid var(--background-light);
+    border-width: 0 0 1px 0;
+    padding: 0.3em 0.5em;
+}
+
+button, input[type=button], input[type=submit] {
+    background: linear-gradient(var(--background-main), var(--background-dark));
+    border: none;
+    border-radius: 3px;
+    color: white;
+    padding: 0.4em 1.5em 0.5em 1.5em;
+}
+
+button:active, input[type=button]:active, input[type=submit]:active {
+    background: linear-gradient(var(--background-dark), var(--background-main));
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.view-port {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.border-main {
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--background-main);
+}
+
+.title-bar {
+    background-color: var(--background-main);
+    color: white;
+    padding: 0.7em 1em;
+}
+
+.button-bar {
+    padding: 1em;
+}
+
+.top-bar {
+    background-color: var(--background-main);
+    color: white;
+    height: var(--top-bar-height);
+}
+
+.top-bar .title {
+    padding: 1em 0 0 2em;
+}
+
+.top-bar .title * {
+    font-size: 16pt;
+}
+
+.top-bar a {
+    color: white;
+}
+
+.nav-bar {
+    position: absolute;
+    top: var(--top-bar-height);
+    left: 0;
+    bottom: 0;
+    width: var(--nav-bar-width);
+    background-color: var(--background-bright);
+}
+
+.nav-bar ul {
+    margin: 0;
+    padding: 0;
+}
+
+.nav-bar ul li {
+    list-style: none;
+    text-align: left;
+}
+
+.nav-bar ul li:first-child > div {
+    margin-top: 1em;
+}
+
+.nav-bar ul li i {
+    display: inline-block;
+    min-width: 20pt;
+    font-size: 14pt;
+    color: var(--module-icon-color);
+}
+
+.nav-bar ul li a {
+    display: block;
+    text-decoration: none;
+    padding: 1em 1em 1em 1.5em;
+    color: var(--background-dark);
+}
+
+.nav-bar ul li a.active {
+    font-weight: bold;
+    background: var(--background-dark);
+    color: white;
+}
+
+.nav-bar ul li a.active i {
+    color: var(--module-icon-color-active);
+}
+
+div.main-panel {
+    position: absolute;
+    top: var(--top-bar-height);
+    left: var(--nav-bar-width);
+    bottom: 0;
+    right: 0;
+}
+
+iframe[name=main-content] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.form-field-wrapper {
+    margin: 1em;
+    display: inline-block;
+    width: 20em;
+}
+
+.form-field {
+    width: 100%;
+    display: inline-flex;
+}
+
+form .field-label {
+    display: inline-block;
+    vertical-align: middle;
+    vertical-align: center;
+    padding: 0.3em 0.5em;
+}
+
+form .field-label::after {
+    content: ':';
+}
+
+.form-field input[type=text], .form-field select {
+    font-family: 'Consolas', monospace;
+    flex-grow: 1;
+    width: auto;
+}
+
+.form-field-wrapper-textarea {
+    margin: 1em;
+    display: block;
+}
+
+.form-field-textarea {
+    display: block;
+    width: 40em;
+}
+
+.form-field-textarea textarea {
+    margin-top: 5px;
+    border: var(--background-light) 1px solid;
+    padding: 0.5em;
+    width: 100%;
+    height: 10em;
+}
+
+.form-field select {
+    border: var(--background-light) 1px solid;
+    padding: 0.2em 0.5em;
+}
+
+.form-message {
+    margin: 1em;
+}
+
+.form, .data-table {
+    margin-bottom: 1em;
+}

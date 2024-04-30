@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="form" class="form border-main" th:if="${form != null}">
+    <form th:action="${form.action}" th:method="${form.method.name()}">
+        <div class="title-bar" th:text="${form.title}"></div>
+        <div class="form-message" th:if="${form.message != null}" th:text="${form.message}"></div>
+
+        <div class="form-fields">
+            <div th:each="field: ${form.fields}" th:if="${field.fieldType.name() != 'Hidden'}"
+                 th:class="${field.fieldType.name() == 'TextArea'? 'form-field-wrapper-textarea': 'form-field-wrapper'}">
+                <div class="form-field"
+                     th:switch="${field.fieldType.name()}"
+                     th:if="${field.fieldType.name() != 'TextArea'}">
+                    <label class="field-label" th:text="${field.label}"></label>
+                    <input type="text" th:case="'TextField'" th:name="${field.name}"
+                           th:value="${field.value}" th:placeholder="${field.placeHolder}"/>
+                    <input type="password" th:case="'PasswordField'" th:name="${field.name}"
+                           th:value="${field.value}" th:placeholder="${field.placeHolder}"/>
+                    <select th:case="'Select'" th:name="${field.name}">
+                        <option th:each="option : ${field.options}" th:value="${option.key}"
+                                th:selected="${field.value == option.key}"
+                                th:text="${option.value}"></option>
+                    </select>
+                </div>
+                <div class="form-field-textarea"
+                     th:if="${field.fieldType.name() == 'TextArea'}">
+                    <label class="field-label" th:text="${field.label}"></label>
+                    <textarea th:name="${field.name}" th:text="${field.value}"
+                              th:placeholder="${field.placeHolder}"/>
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" th:each="field: ${form.fields}" th:if="${field.fieldType.name() == 'Hidden'}"
+               th:name="${field.name}" th:value="${field.value}">
+
+        <div class="button-bar" th:unless="${form.buttons.isEmpty()}">
+            <span th:each="button: ${form.buttons}" th:switch="${button.buttonType.name()}">
+                <button th:case="'SubmitForm'" type="submit" th:text="${button.buttonText}"></button>
+                <button th:case="'HistoryBack'" th:text="${button.buttonText}"
+                        onclick="window.history.back();return false;"></button>
+            </span>
+        </div>
+    </form>
+</div>
+</body>

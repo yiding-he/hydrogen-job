@@ -1,5 +1,6 @@
-package com.hyd.job.server.domain;
+package com.hyd.job.server.security;
 
+import com.hyd.job.server.domain.User;
 import lombok.Getter;
 import org.springframework.lang.Nullable;
 import org.springframework.security.core.GrantedAuthority;

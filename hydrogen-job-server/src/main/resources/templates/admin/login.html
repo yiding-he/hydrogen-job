@@ -1,20 +1,67 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:replace="~{f/page-meta::meta(pagename='login')}"/>
-    <title th:text="#{index_page_title}"></title>
+    <th:block th:replace="~{admin/fragments/head-common}"></th:block>
+    <style>
+        .login-form-field {
+            margin-top: 20px;
+        }
+
+        .login-form-field > div > span {
+            color: var(--background-dark);
+        }
+
+        .login-form-field:first-child {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .login-form-field > div:nth-child(2) {
+            margin-top: 5px;
+        }
+
+        .logo {
+            font-size: 90px;
+            margin-bottom: 15px;
+            text-shadow: rgba(0, 0, 0, 0.3) 2px 2px 10px;
+        }
+    </style>
 </head>
-<body>
-<form method="post" th:action="@{/admin/login-process}">
-    <div class="panel login">
-        <header><span class="title" th:text="#{login}"></span></header>
-        <main>
-            <input name="username" type="text" th:placeholder="#{username}" autofocus required>
-            <input name="password" type="password" th:placeholder="#{password}" required>
-        </main>
-        <footer class="buttons">
-            <button class="primary" type="submit" th:text="#{login}"></button>
-        </footer>
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+<form action="login-process" method="post">
+    <div style="text-align: center">
+        <div style="display: inline-block;" class="border-main">
+            <table>
+                <tr>
+                    <td width="60%" style="padding: 50px;background: var(--background-main);color: white">
+                        <div><i class="fas fa-baby-carriage logo"></i>
+                        </div>
+                        <div style="word-break: keep-all" th:text="#{application_title}"></div>
+                    </td>
+                    <td style="text-align: left;padding: 30px;">
+                        <div class="login-form-field">
+                            <div>
+                                <span>用户名</span>
+                            </div>
+                            <div>
+                                <input type="text" name="username" required>
+                            </div>
+                        </div>
+                        <div class="login-form-field">
+                            <div>
+                                <span>密码</span>
+                            </div>
+                            <div>
+                                <input type="text" name="password" required>
+                            </div>
+                        </div>
+                        <div class="login-form-field">
+                            <button type="submit">登录</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </form>
 </body>

@@ -1,7 +1,6 @@
 package com.hyd.job.server.security;
 
 import com.hyd.job.server.domain.User;
-import com.hyd.job.server.domain.UserForSpringSecurity;
 import com.hyd.job.server.mapper.UserMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

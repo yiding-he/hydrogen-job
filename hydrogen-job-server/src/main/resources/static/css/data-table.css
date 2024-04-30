@@ -1,0 +1,57 @@
+.data-table td.operations a {
+    display: inline-block;
+    margin: 0.2em 0.5em;
+}
+
+table.data-table {
+    margin-bottom: 1em;
+}
+
+table.data-table td, table.data-table th {
+    padding: 0.2em 0.5em;
+}
+
+table.data-table tbody td {
+    text-align: left;
+    word-break: break-all;
+}
+
+table.data-table {
+    border: 1px solid #FFFFFF;
+    border-collapse: collapse;
+}
+table.data-table td, table.data-table th {
+    border: 1px solid #FFFFFF;
+}
+table.data-table tr:nth-child(even) {
+    background: #EBEBEB;
+}
+table.data-table thead {
+    text-align: center;
+    background: var(--background-main);
+    background: linear-gradient(var(--background-main), var(--background-dark));
+    border-bottom: 2px solid #FFFFFF;
+}
+table.data-table thead th {
+    padding: 0.3em 1em 0.4em;
+    color: #FFFFFF;
+    text-align: center;
+    border-left: 2px solid #FFFFFF;
+}
+table.data-table thead th:first-child {
+    border-left: none;
+}
+
+table.data-table tfoot td {
+    font-size: 14px;
+}
+
+table.data-table td a {
+    text-decoration: none;
+    color: var(--background-main);
+}
+
+table.data-table tfoot td {
+    background: var(--background-bright);
+    padding: 0.5em;
+}

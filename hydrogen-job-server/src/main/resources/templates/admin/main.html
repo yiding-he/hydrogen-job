@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{admin/fragments/head-common}"></th:block>
+</head>
+<body>
+<div class="view-port">
+    <div class="top-bar">
+        <div style="float: left" class="title">
+            <i class="fas fa-baby-carriage" style="display: inline-block;margin-right: 0.5em"></i>
+            <span th:text="#{application_title}"></span>
+        </div>
+        <div style="float: right; padding: 1.6em 1em 0 0">
+            <span th:text="${session.user.userName}" style="padding-right: 1em"></span>
+            <a href="logout">退出</a>
+        </div>
+    </div>
+    <div class="nav-bar">
+        <ul>
+            <li th:each="module : ${modules}">
+                <div>
+                    <a th:href="'modules/' + ${module.modulePath} + '/index'"
+                       th:target="main-content">
+                        <i th:class="${module.icon}?:'fab fa-slack-hash'"></i>
+                        <span th:text="${module.moduleName}"></span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="main-panel">
+        <iframe name="main-content" frameborder="0"></iframe>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('.nav-bar ul li a').click(function () {
+            $('.nav-bar ul li a').removeClass('active');
+            $(this).addClass('active');
+        });
+    });
+</script>
+</body>
+</html>

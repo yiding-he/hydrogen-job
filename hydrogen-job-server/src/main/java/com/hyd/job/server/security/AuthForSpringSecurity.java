@@ -1,4 +1,4 @@
-package com.hyd.job.server.domain;
+package com.hyd.job.server.security;
 
 import lombok.Getter;
 import org.springframework.lang.NonNull;

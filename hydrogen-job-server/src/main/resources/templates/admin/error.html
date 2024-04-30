@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{application_title}"></title>
+    <link rel="stylesheet" th:href="@{/default.css}">
+    <script th:src="@{/jquery-3.5.0.js}"></script>
+    <script th:src="@{/jquery-dateformat.js}"></script>
+    <style>
+        pre {
+            padding: 0.5em;
+            height: 500px;
+            border: var(--background-light) 1px solid;
+            overflow: auto;
+        }
+
+        pre, .message {
+            font-family: 'Consolas', monospace;
+            color: var(--background-dark);
+        }
+    </style>
+</head>
+<body>
+<div class="view-port" style="padding: 1em">
+    <div class="message">
+        请求处理失败: <span th:text="${message}"></span>
+        <button onclick="window.history.back();return false;">返回</button>
+    </div>
+    <pre th:text="${trace}"></pre>
+</div>
+</body>
+</html>

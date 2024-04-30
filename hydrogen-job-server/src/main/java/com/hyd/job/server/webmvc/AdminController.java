@@ -1,7 +1,8 @@
 package com.hyd.job.server.webmvc;
 
-import com.hyd.job.server.domain.MenuItem;
-import com.hyd.job.server.domain.ResponseData;
+import com.hyd.job.server.domain.User;
+import com.hyd.job.server.mapper.ModuleMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
@@ -11,11 +12,14 @@ import org.springframework.web.servlet.ModelAndView;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/admin")
+@SessionAttributes("user")
 public class AdminController {
+
+  @Autowired
+  private ModuleMapper moduleMapper;
 
   @InitBinder
   public void initBinder(WebDataBinder binder) {
@@ -34,33 +38,10 @@ public class AdminController {
   //////////////////////////////////////// Index
 
   @RequestMapping({"/index", "/"})
-  public ModelAndView index() {
-    return new ModelAndView("/admin/index")
-      .addObject("menuItems", List.of(
-        new MenuItem("1", false, List.of(
-          new MenuItem("1.1", false, null),
-          new MenuItem("1.2", false, null),
-          new MenuItem("1.3", false, List.of(
-            new MenuItem("1.3.1", false, null),
-            new MenuItem("1.3.2", false, null)
-          ))
-        )),
-        new MenuItem("2", false, List.of(
-          new MenuItem("2.1", false, null),
-          new MenuItem("2.2", false, null)
-        ))
-      ))
-      ;
+  public ModelAndView index(@SessionAttribute("user") User user) {
+    List<Module> modules = moduleMapper.listModules(user.getUserId());
+    return new ModelAndView("/admin/main").addObject("modules", modules);
   }
 
-  @RequestMapping("/chartInfo")
-  @ResponseBody
-  public ResponseData<Map<String, Object>> chartInfo(
-    @RequestParam("startDate") Date startDate, @RequestParam("endDate") Date endDate
-  ) {
-    return ResponseData.success();
-  }
-
-  //////////////////////////////////////// User
 
 }

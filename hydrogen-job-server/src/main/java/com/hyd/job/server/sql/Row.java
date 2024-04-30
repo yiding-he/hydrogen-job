@@ -1,6 +1,7 @@
 package com.hyd.job.server.sql;
 
 import jodd.bean.BeanUtil;
+import jodd.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.map.CaseInsensitiveMap;
 
@@ -258,7 +259,10 @@ public class Row extends CaseInsensitiveMap<String, Object> {
     if (t == null) {
       return null;
     }
-    keySet().forEach(key -> BeanUtil.pojo.setProperty(t, key, get(key)));
+    keySet().forEach(key -> {
+      var propertyName = StringUtil.toCamelCase(key, false, '_');
+      BeanUtil.pojo.setProperty(t, propertyName, get(key));
+    });
     return t;
   }
 }

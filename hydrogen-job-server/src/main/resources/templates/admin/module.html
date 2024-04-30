@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{application_title}"></title>
+    <link rel="stylesheet" th:href="@{/default.css}">
+    <script th:src="@{/jquery-3.5.0.js}"></script>
+    <script th:src="@{/jquery-dateformat.js}"></script>
+</head>
+<body>
+<div class="view-port" style="padding: 1em">
+    <div th:each="component : ${components}" th:switch="${component.class.name}">
+
+        <div th:case="'com.frxs.fund.support.ui.table.DataTable'">
+            <div th:replace="fragments/data-table::data-table(table=${component})"></div>
+        </div>
+
+        <div th:case="'com.frxs.fund.support.ui.form.Form'">
+            <div th:replace="fragments/form::form(form=${component})"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

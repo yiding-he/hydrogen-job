@@ -19,6 +19,14 @@ public interface UserMapper extends SqlMapper {
     return row == null ? null : row.injectTo(new User());
   }
 
+  default User findByUserId(long userId) {
+    var row = queryOne(Sql
+      .Select("*").From(TABLE_NAME)
+      .Where("user_id=?", userId));
+
+    return row == null ? null : row.injectTo(new User());
+  }
+
   default User insertUser(User user) {
     user.setUserId(snowflake.nextId());
     execute(Sql.Insert(TABLE_NAME)

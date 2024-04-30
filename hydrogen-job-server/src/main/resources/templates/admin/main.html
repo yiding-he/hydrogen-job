@@ -22,7 +22,7 @@
                     <a th:href="'modules/' + ${module.modulePath} + '/index'"
                        th:target="main-content">
                         <i th:class="${module.icon}?:'fab fa-slack-hash'"></i>
-                        <span th:text="${module.moduleName}"></span>
+                        <span th:text="#{${module.moduleName}}"></span>
                     </a>
                 </div>
             </li>

@@ -21,8 +21,8 @@ import java.util.Collection;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/modules")
-@SessionAttributes(names = {"sessionUser"}, types = {User.class})
+@RequestMapping("/admin/modules")
+@SessionAttributes(names = {"user"}, types = {User.class})
 public class ModuleController {
 
     @Autowired
@@ -38,7 +38,7 @@ public class ModuleController {
     public ModelAndView moduleGetAction(
         @PathVariable("modulePath") String modulePath,
         @PathVariable("operation") String operation,
-        @SessionAttribute("sessionUser") User user,
+        @SessionAttribute("user") User user,
         HttpServletRequest request,
         HttpServletResponse response
     ) throws Exception {
@@ -73,7 +73,7 @@ public class ModuleController {
                 }
             }
 
-            return new ModelAndView("module", model);
+            return new ModelAndView("/admin/module", model);
 
         } else {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);

@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title th:text="#{application_title}"></title>
-    <link rel="stylesheet" th:href="@{/default.css}">
-    <script th:src="@{/jquery-3.5.0.js}"></script>
-    <script th:src="@{/jquery-dateformat.js}"></script>
+    <th:block th:replace="~{admin/fragments/head-common}"></th:block>
     <style>
         pre {
             padding: 0.5em;

@@ -2,6 +2,7 @@ package com.hyd.job.server.webmvc;
 
 import com.hyd.job.server.domain.User;
 import com.hyd.job.server.mapper.ModuleMapper;
+import com.hyd.job.server.webmvc.module.ModuleObj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -39,7 +40,7 @@ public class AdminController {
 
   @RequestMapping({"/index", "/"})
   public ModelAndView index(@SessionAttribute("user") User user) {
-    List<Module> modules = moduleMapper.listModules(user.getUserId());
+    List<ModuleObj> modules = moduleMapper.listModules(user.getUserId());
     return new ModelAndView("/admin/main").addObject("modules", modules);
   }
 

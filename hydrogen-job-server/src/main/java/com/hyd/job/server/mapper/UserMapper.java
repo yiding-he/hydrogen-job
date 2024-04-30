@@ -4,6 +4,7 @@ import com.hyd.job.server.domain.User;
 import com.hyd.job.server.sql.Sql;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
 import java.util.Map;
 
 @Mapper
@@ -39,5 +40,11 @@ public interface UserMapper extends SqlMapper {
         "line_id", user.getLineId()
       )));
     return user;
+  }
+
+  default List<User> listAll() {
+    return this.query(Sql.Select("*").From(TABLE_NAME))
+      .stream().map(row -> row.injectTo(new User()))
+      .toList();
   }
 }

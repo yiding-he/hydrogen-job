@@ -18,8 +18,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 
 import java.io.IOException;
+
+import static org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN;
 
 @Slf4j
 @Configuration
@@ -49,6 +52,9 @@ public class SecurityConfig {
       .logoutUrl("/admin/logout")
       .logoutSuccessUrl("/admin/login")
       .permitAll()
+
+    ).headers(headers -> headers
+      .addHeaderWriter(new XFrameOptionsHeaderWriter(SAMEORIGIN))
 
     ).build();
   }

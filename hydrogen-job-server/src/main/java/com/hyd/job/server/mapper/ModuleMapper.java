@@ -9,7 +9,8 @@ import java.util.List;
 public interface ModuleMapper {
 
   List<ModuleObj> MODULES = List.of(
-    new ModuleObj(1L, "module_name_user", "user", "ok", "fas fa-baby")
+    new ModuleObj(1L, "module_name_user", "user", "ok", "fas fa-baby"),
+    new ModuleObj(2L, "module_name_product", "product", "ok", "fas fa-baby")
   );
 
   default List<ModuleObj> listModules(long userId) {

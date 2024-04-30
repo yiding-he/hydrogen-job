@@ -16,9 +16,11 @@ public abstract class ModuleOperation {
 
     public abstract String getOperation();
 
-    public abstract void execute(RequestContext requestContext) throws Exception;
+  public void execute(RequestContext requestContext) throws Exception {
+    requestContext.addMessage("message_wip_title", "message_wip");
+  }
 
-    /**
+  /**
      * 给选项列表补充一项
      *
      * @param list     现有列表

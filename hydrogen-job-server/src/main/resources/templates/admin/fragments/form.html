@@ -3,8 +3,8 @@
 <body>
 <div th:fragment="form" class="form border-main" th:if="${form != null}">
     <form th:action="${form.action}" th:method="${form.method.name()}">
-        <div class="title-bar" th:text="${form.title}"></div>
-        <div class="form-message" th:if="${form.message != null}" th:text="${form.message}"></div>
+        <div class="title-bar" th:text="#{${form.title}}"></div>
+        <div class="form-message" th:if="${form.message != null}" th:text="#{${form.message}}"></div>
 
         <div class="form-fields">
             <div th:each="field: ${form.fields}" th:if="${field.fieldType.name() != 'Hidden'}"

@@ -1,7 +1,7 @@
-package com.hyd.job.server.webmvc.module.user;
+package com.hyd.job.server.webmvc.module.product;
 
+import com.hyd.job.server.domain.Product;
 import com.hyd.job.server.mapper.ProductMapper;
-import com.hyd.job.server.mapper.UserMapper;
 import com.hyd.job.server.webmvc.RequestContext;
 import com.hyd.job.server.webmvc.module.ModuleOperation;
 import com.hyd.job.server.webmvc.ui.form.FieldType;
@@ -10,17 +10,14 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserAdd extends ModuleOperation {
-
-  @Autowired
-  private UserMapper userMapper;
+public class ProductAdd extends ModuleOperation {
 
   @Autowired
   private ProductMapper productMapper;
 
   @Override
   public String getModulePath() {
-    return "user";
+    return "product";
   }
 
   @Override
@@ -33,24 +30,20 @@ public class UserAdd extends ModuleOperation {
     if (requestContext.isGetMethod()) {
       showForm(requestContext);
     } else {
-      doAddUser(requestContext);
+      doAddProduct(requestContext);
     }
   }
 
   private void showForm(RequestContext requestContext) {
-    requestContext
-      .addForm(getOperation(), HttpMethod.POST, "user_add_user")
-      .addField("用户名", "username", FieldType.TextField)
-      .addField("密码", "password", FieldType.TextField)
-      .addField("产品", "product", productMapper.listAsKeyValue())
+    requestContext.addForm(getOperation(), HttpMethod.POST, "product_add_product")
+      .addField("product_form_name", "productName", FieldType.TextField)
     ;
   }
 
-  private void doAddUser(RequestContext requestContext) {
-    String username = requestContext.getParameter("username");
-    String password = requestContext.getParameter("password");
-    Long roleId = requestContext.getParameterLong("roleId");
-
-    // TODO: 保存用户信息到数据库
+  private void doAddProduct(RequestContext requestContext) {
+    var productName = requestContext.getParameter("productName");
+    var product = new Product();
+    product.setProductName(productName);
+    productMapper.insertProduct(product);
   }
 }

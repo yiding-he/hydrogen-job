@@ -12,7 +12,7 @@
                 <div class="form-field"
                      th:switch="${field.fieldType.name()}"
                      th:if="${field.fieldType.name() != 'TextArea'}">
-                    <label class="field-label" th:text="${field.label}"></label>
+                    <label class="field-label" th:text="#{${field.label}}"></label>
                     <input type="text" th:case="'TextField'" th:name="${field.name}"
                            th:value="${field.value}" th:placeholder="${field.placeHolder}"/>
                     <input type="password" th:case="'PasswordField'" th:name="${field.name}"

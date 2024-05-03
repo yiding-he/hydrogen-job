@@ -45,4 +45,11 @@ public interface ProductMapper extends SqlMapper {
       "product_name", product.getProductName()
     )));
   }
+
+  default void updateProduct(Long productId, String productName) {
+    execute(Sql.Update(TABLE_NAME)
+      .Set("product_name", productName)
+      .Where("product_id=?", productId)
+    );
+  }
 }

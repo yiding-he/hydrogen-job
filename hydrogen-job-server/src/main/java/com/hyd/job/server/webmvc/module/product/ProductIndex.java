@@ -26,9 +26,10 @@ public class ProductIndex extends ModuleOperation {
   @Override
   public void execute(RequestContext requestContext) throws Exception {
     var dataTable = requestContext.addTable()
-      .addColumn("id", "产品ID")
+      .addColumn("productId", "产品ID")
       .addColumn("productName", "产品名称")
-      .addOperation("edit", "编辑");
+      .addOperation("编辑", "edit")
+      .addOperation("删除", "delete", "确定要删除吗？");
 
     var products = productMapper.listAllProducts();
     for (Product product : products) {

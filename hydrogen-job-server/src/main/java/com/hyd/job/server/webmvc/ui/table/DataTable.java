@@ -1,12 +1,12 @@
 package com.hyd.job.server.webmvc.ui.table;
 
 import com.hyd.job.server.webmvc.ui.Component;
+import com.hyd.job.server.webmvc.ui.op.Operation;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +16,7 @@ public class DataTable extends Component {
 
     private List<Column> columns = new ArrayList<>();
 
-    private Map<String, String> operations = new LinkedHashMap<>();
+    private List<Operation> operations = new ArrayList<>();
 
     private List<Map<String, Object>> rows = new ArrayList<>();
 
@@ -39,8 +39,13 @@ public class DataTable extends Component {
         return this;
     }
 
-    public DataTable addOperation(String key, String name) {
-        this.operations.put(key, name);
+    public DataTable addOperation(String name, String code) {
+        this.operations.add(new Operation(name, code));
+        return this;
+    }
+
+    public DataTable addOperation(String name, String code, String confirm) {
+        this.operations.add(new Operation(name, code, confirm));
         return this;
     }
 

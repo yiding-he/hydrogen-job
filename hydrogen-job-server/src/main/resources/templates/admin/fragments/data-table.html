@@ -13,8 +13,9 @@
         <tr th:each="row : ${table.rows}">
             <td th:each="column : ${table.columns}" th:text="${row.get(column.propertyName)}"></td>
             <td th:if="${!table.operations.isEmpty()}" class="operations">
-                <a th:each="operation : ${table.operations.entrySet()}"
-                   th:text="${operation.value}" th:href="${operation.key + '?id=' + row.id}"></a>
+                <a th:each="operation : ${table.operations}"
+                   th:data-confirm="${operation.confirm}"
+                   th:text="${operation.name}" th:href="${operation.code + '?id=' + row.id}"></a>
             </td>
         </tr>
         </tbody>

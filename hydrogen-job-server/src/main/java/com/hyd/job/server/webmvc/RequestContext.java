@@ -141,7 +141,7 @@ public class RequestContext {
         DataTable dataTable = new DataTable();
         addComponent(dataTable);
 
-        if (this.pageConditions != null) {
+        if (!this.pageConditions.isEmpty()) {
             dataTable.setConditions(JSON.toJSONString(this.pageConditions));
         }
 
@@ -174,7 +174,7 @@ public class RequestContext {
 
     public String getParameter(String paramName) {
         String value = httpServletRequest.getParameter(paramName);
-        if (!hasText(value) && this.pageConditions != null) {
+        if (!hasText(value) && !this.pageConditions.isEmpty()) {
             value = this.pageConditions.getOrDefault(paramName, EMPTY_PARAM_VALUE).get(0);
         }
         if (!hasText(value)) {
@@ -185,7 +185,7 @@ public class RequestContext {
 
     public String getParameter(String paramName, String defaultValue) {
         String value = httpServletRequest.getParameter(paramName);
-        if (!hasText(value) && this.pageConditions != null) {
+        if (!hasText(value) && !this.pageConditions.isEmpty()) {
             value = this.pageConditions.getOrDefault(paramName, EMPTY_PARAM_VALUE).get(0);
         }
         if (!hasText(value)) {

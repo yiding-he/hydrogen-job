@@ -34,6 +34,7 @@ public class ProductIndex extends ModuleOperation {
     var products = productMapper.listAllProducts();
     for (Product product : products) {
       dataTable.addRow(product.getProductId())
+        .setAttribute("productId", product.getProductId())
         .setAttribute("productName", product.getProductName());
     }
   }

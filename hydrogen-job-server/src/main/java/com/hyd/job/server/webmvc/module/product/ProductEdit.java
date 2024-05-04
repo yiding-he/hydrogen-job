@@ -21,7 +21,7 @@ public class ProductEdit extends ModuleOperation {
 
   @Override
   public String getOperation() {
-    return "add";
+    return "edit";
   }
 
   @Override
@@ -35,10 +35,10 @@ public class ProductEdit extends ModuleOperation {
 
   private void showForm(RequestContext requestContext) {
     var id = requestContext.getParameterLong("id");
-
+    var product = productMapper.findByProductId(id);
     requestContext.addForm(getOperation(), HttpMethod.POST, "product_add_product")
       .addHiddenField("id", id)
-      .addField("product_form_name", "productName", FieldType.TextField)
+      .addField("product_form_name", "productName", product.getProductName(), FieldType.TextField)
     ;
   }
 

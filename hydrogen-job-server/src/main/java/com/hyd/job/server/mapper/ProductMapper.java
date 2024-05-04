@@ -1,5 +1,6 @@
 package com.hyd.job.server.mapper;
 
+import com.hyd.job.server.Result;
 import com.hyd.job.server.domain.Product;
 import com.hyd.job.server.sql.Row;
 import com.hyd.job.server.sql.Sql;
@@ -27,14 +28,21 @@ public interface ProductMapper extends SqlMapper {
     return listAllRows().stream().map(converter).toList();
   }
 
+  default List<Product> listAllProducts() {
+    return listAllRows().stream().map(row -> row.injectTo(new Product())).toList();
+  }
+
   default List<Row> listAllRows() {
     return query(
       Sql.Select("product_id", "product_name").From(TABLE_NAME)
     );
   }
 
-  default List<Product> listAllProducts() {
-    return listAllRows().stream().map(row -> row.injectTo(new Product())).toList();
+  default Product findByProductId(Long productId) {
+    return this.queryOne(Sql
+      .Select("*").From(TABLE_NAME)
+      .Where("product_id=?", productId)
+    ).injectTo(new Product());
   }
 
   default void insertProduct(Product product) {
@@ -51,5 +59,11 @@ public interface ProductMapper extends SqlMapper {
       .Set("product_name", productName)
       .Where("product_id=?", productId)
     );
+  }
+
+  default Result<?> deleteProduct(Long productId) {
+    // TODO 检查是否满足删除条件
+    execute(Sql.Delete(TABLE_NAME).Where("product_id=?", productId));
+    return Result.success();
   }
 }

@@ -40,9 +40,7 @@ public class AdminController {
 
   @RequestMapping({"/index", "/"})
   public ModelAndView index(@SessionAttribute("user") User user) {
-    List<ModuleObj> modules = moduleMapper.listModules(user.getUserId());
+    List<ModuleObj> modules = moduleMapper.listModules(user.getUserName());
     return new ModelAndView("/admin/main").addObject("modules", modules);
   }
-
-
 }

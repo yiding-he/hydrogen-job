@@ -37,7 +37,8 @@ public interface UserMapper extends SqlMapper {
         "password", user.getPassword(),
         "email", user.getEmail(),
         "product_id", user.getProductId(),
-        "line_id", user.getLineId()
+        "line_id", user.getLineId(),
+        "type", user.getType()
       )));
     return user;
   }
